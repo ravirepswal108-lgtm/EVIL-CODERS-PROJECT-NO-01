@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrafficFlow Pro - AI-Powered Traffic Management</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with search and route planning -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">TrafficFlow Pro</h1>
+                
+                <!-- Route Planning Section -->
+                <div class="route-planning">
+                    <div class="route-inputs">
+                        <div class="route-input-group">
+                            <span class="route-marker route-marker--origin">A</span>
+                            <input type="text" class="form-control route-input" placeholder="Enter origin address..." id="origin-input">
+                        </div>
+                        <button class="btn btn--sm route-swap-btn" id="swap-routes">⇅</button>
+                        <div class="route-input-group">
+                            <span class="route-marker route-marker--destination">B</span>
+                            <input type="text" class="form-control route-input" placeholder="Enter destination address..." id="destination-input">
+                        </div>
+                    </div>
+                    <button class="btn btn--primary route-plan-btn" id="plan-route">Get Directions</button>
+                </div>
+
+                <div class="header-controls">
+                    <button class="btn btn--secondary find-location-btn" id="find-location">📍 My Location</button>
+                    <button class="btn btn--outline layer-toggle-btn" id="toggle-panel">☰ Controls</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <!-- Control Panel -->
+            <div class="control-panel" id="control-panel">
+                <!-- Route Options -->
+                <div class="control-section route-options-section hidden" id="route-options-section">
+                    <h3>Route Options</h3>
+                    <div class="route-options" id="route-options-container">
+                        <!-- Route options will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Map Layers -->
+                <div class="control-section">
+                    <h3>Map Layers</h3>
+                    <div class="control-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="traffic-signals-toggle" checked>
+                            <span class="toggle-text">Traffic Signals</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="traffic-flow-toggle" checked>
+                            <span class="toggle-text">Traffic Flow</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="incidents-toggle" checked>
+                            <span class="toggle-text">Incidents</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="analytics-toggle">
+                            <span class="toggle-text">Traffic Analytics</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Map Style -->
+                <div class="control-section">
+                    <h3>Map Style</h3>
+                    <div class="control-group">
+                        <select class="form-control" id="map-style">
+                            <option value="streets">Streets</option>
+                            <option value="satellite">Satellite</option>
+                            <option value="dark">Dark Mode</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Traffic Predictions -->
+                <div class="control-section">
+                    <h3>AI Traffic Predictions</h3>
+                    <div class="prediction-card">
+                        <div class="prediction-item">
+                            <span class="prediction-label">Next 30 min:</span>
+                            <span class="prediction-value" id="prediction-30">Loading...</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="prediction-label">Peak Expected:</span>
+                            <span class="prediction-value" id="prediction-peak">Loading...</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="prediction-label">Best Departure:</span>
+                            <span class="prediction-value" id="prediction-departure">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traffic Statistics -->
+                <div class="control-section">
+                    <h3>Live Traffic Metrics</h3>
+                    <div class="stats-container" id="traffic-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Vehicles Monitored:</span>
+                            <span class="stat-value" id="vehicles-monitored">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Avg City Speed:</span>
+                            <span class="stat-value" id="avg-city-speed">0 mph</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Congestion Index:</span>
+                            <span class="stat-value" id="congestion-index">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Active Incidents:</span>
+                            <span class="stat-value" id="active-incidents">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Signal Efficiency:</span>
+                            <span class="stat-value" id="signal-efficiency">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traffic Legend -->
+                <div class="control-section">
+                    <h3>Traffic Legend</h3>
+                    <div class="legend">
+                        <div class="legend-category">
+                            <h4>Traffic Flow</h4>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #22c55e;"></div>
+                                <span>Free Flow</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #f59e0b;"></div>
+                                <span>Moderate Traffic</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #ef4444;"></div>
+                                <span>Heavy Congestion</span>
+                            </div>
+                        </div>
+                        <div class="legend-category">
+                            <h4>Traffic Signals</h4>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #16a34a;"></div>
+                                <span>Green Light</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #fbbf24;"></div>
+                                <span>Yellow Light</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #dc2626;"></div>
+                                <span>Red Light</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #ec4899;"></div>
+                                <span>Emergency Override</span>
+                            </div>
+                        </div>
+                        <div class="legend-category">
+                            <h4>Incidents</h4>
+                            <div class="legend-item">
+                                <div class="legend-icon">🚧</div>
+                                <span>Construction</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-icon">🚗</div>
+                                <span>Accident</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-icon">⚠️</div>
+                                <span>Road Closure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <div id="map"></div>
+                
+                <!-- Map Controls -->
+                <div class="map-controls">
+                    <button class="btn btn--secondary map-control-btn" id="zoom-in">+</button>
+                    <button class="btn btn--secondary map-control-btn" id="zoom-out">−</button>
+                    <button class="btn btn--secondary map-control-btn" id="fullscreen">⛶</button>
+                    <button class="btn btn--secondary map-control-btn" id="center-map">📍</button>
+                </div>
+
+                <!-- Traffic Analytics Dashboard -->
+                <div class="analytics-dashboard hidden" id="analytics-dashboard">
+                    <div class="dashboard-header">
+                        <h3>Traffic Analytics Dashboard</h3>
+                        <button class="btn btn--sm" id="close-analytics">✕</button>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="analytics-chart">
+                            <h4>Hourly Traffic Patterns</h4>
+                            <div class="chart-container" style="position: relative; height: 200px;">
+                                <canvas id="traffic-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-metrics">
+                            <div class="metric-card">
+                                <h5>Peak Hours</h5>
+                                <p>8-9 AM, 5-6 PM</p>
+                            </div>
+                            <div class="metric-card">
+                                <h5>Avg Delay</h5>
+                                <p id="avg-delay">8.5 minutes</p>
+                            </div>
+                            <div class="metric-card">
+                                <h5>Hotspots</h5>
+                                <p>Times Square, Penn Station</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Update Indicator -->
+                <div class="update-indicator" id="update-indicator">
+                    <span class="indicator-dot"></span>
+                    <span class="indicator-text">Real-time Updates</span>
+                    <span class="indicator-time" id="last-update"></span>
+                </div>
+
+                <!-- Route Summary -->
+                <div class="route-summary hidden" id="route-summary">
+                    <div class="summary-header">
+                        <h3>Route Summary</h3>
+                        <button class="btn btn--sm" id="close-route-summary">✕</button>
+                    </div>
+                    <div class="summary-content" id="summary-content">
+                        <!-- Route summary content will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading overlay -->
+        <div class="loading-overlay hidden" id="loading-overlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Analyzing traffic patterns...</p>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div class="notification hidden" id="notification">
+            <div class="notification-content">
+                <span class="notification-message"></span>
+                <button class="btn btn--sm notification-close">✕</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
