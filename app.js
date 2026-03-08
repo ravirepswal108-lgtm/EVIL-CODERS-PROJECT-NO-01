@@ -6,7 +6,7 @@ const TRAFFIC_DATA = {
         "id": "broadway_times_square",
         "name": "Broadway (Times Square to Columbus Circle)",
         "coordinates": [[40.7580, -73.9855], [40.7674, -73.9823], [40.7700, -73.9831]],
-        "current_speed": 12,
+        "current_speed": 12, 
         "free_flow_speed": 25,
         "congestion_level": "heavy",
         "traffic_volume": 2400,
@@ -154,6 +154,65 @@ const TRAFFIC_DATA = {
       }
     ]
   },
+  "network_graph": {
+    "nodes": [
+      { "id": "n1",  "name": "Houston St & Varick St",          "lat": 40.7281, "lng": -74.0063 },
+      { "id": "n2",  "name": "Union Square (14th & Broadway)",  "lat": 40.7359, "lng": -73.9906 },
+      { "id": "n3",  "name": "23rd St & 6th Ave",               "lat": 40.7428, "lng": -73.9914 },
+      { "id": "n4",  "name": "Penn Station (34th & 8th Ave)",   "lat": 40.7505, "lng": -73.9934 },
+      { "id": "n5",  "name": "Times Square (42nd & Broadway)",  "lat": 40.7580, "lng": -73.9855 },
+      { "id": "n6",  "name": "Central Park South & 5th Ave",    "lat": 40.7614, "lng": -73.9776 },
+      { "id": "n7",  "name": "Columbus Circle",                 "lat": 40.7700, "lng": -73.9831 },
+      { "id": "n8",  "name": "Lincoln Center (65th & Broadway)","lat": 40.7736, "lng": -73.9851 },
+      { "id": "n9",  "name": "Brooklyn Bridge",                 "lat": 40.7081, "lng": -73.9967 },
+      { "id": "n10", "name": "Battery Park",                     "lat": 40.7074, "lng": -74.0113 },
+      { "id": "n11", "name": "14th St & 3rd Ave",                "lat": 40.7340, "lng": -73.9860 },
+      { "id": "n12", "name": "34th St & Park Ave",               "lat": 40.7480, "lng": -73.9810 },
+      { "id": "n13", "name": "59th St & FDR Drive",              "lat": 40.7589, "lng": -73.9441 },
+      { "id": "n14", "name": "23rd St & Broadway",               "lat": 40.7400, "lng": -73.9900 },
+      { "id": "n15", "name": "34th St & Broadway",               "lat": 40.7485, "lng": -73.9880 },
+      { "id": "n16", "name": "42nd St & 5th Ave",                "lat": 40.7527, "lng": -73.9817 },
+      { "id": "n17", "name": "57th St & 7th Ave",                "lat": 40.7650, "lng": -73.9795 },
+      { "id": "n18", "name": "72nd St & Broadway",               "lat": 40.7784, "lng": -73.9814 },
+      { "id": "n19", "name": "Tribeca (Chambers St)",            "lat": 40.7163, "lng": -74.0086 },
+      { "id": "n20", "name": "SoHo (Spring & Lafayette)",        "lat": 40.7233, "lng": -73.9985 }
+    ],
+    "edges": [
+      { "from": "n10", "to": "n19", "road_name": "West Side Highway",       "distance_km": 1.0, "base_speed_kmh": 50, "congestion_factor": 0.20 },
+      { "from": "n19", "to": "n1",  "road_name": "West St",                 "distance_km": 1.3, "base_speed_kmh": 35, "congestion_factor": 0.40 },
+      { "from": "n1",  "to": "n3",  "road_name": "6th Ave (northbound)",    "distance_km": 1.7, "base_speed_kmh": 30, "congestion_factor": 0.50 },
+      { "from": "n3",  "to": "n4",  "road_name": "6th Ave (23rd-34th)",     "distance_km": 1.1, "base_speed_kmh": 25, "congestion_factor": 0.60 },
+      { "from": "n4",  "to": "n5",  "road_name": "8th Ave (34th-42nd)",     "distance_km": 1.2, "base_speed_kmh": 20, "congestion_factor": 0.80 },
+      { "from": "n5",  "to": "n7",  "road_name": "Broadway (42nd-Columbus)","distance_km": 1.4, "base_speed_kmh": 22, "congestion_factor": 0.50 },
+      { "from": "n7",  "to": "n8",  "road_name": "Broadway (Columbus-65th)","distance_km": 0.5, "base_speed_kmh": 30, "congestion_factor": 0.20 },
+      { "from": "n8",  "to": "n18", "road_name": "Broadway (65th-72nd)",    "distance_km": 0.6, "base_speed_kmh": 35, "congestion_factor": 0.15 },
+      { "from": "n20", "to": "n2",  "road_name": "Broadway (SoHo-Union Sq)","distance_km": 1.4, "base_speed_kmh": 25, "congestion_factor": 0.50 },
+      { "from": "n2",  "to": "n14", "road_name": "Broadway (14th-23rd)",    "distance_km": 1.0, "base_speed_kmh": 28, "congestion_factor": 0.40 },
+      { "from": "n14", "to": "n15", "road_name": "Broadway (23rd-34th)",    "distance_km": 1.0, "base_speed_kmh": 25, "congestion_factor": 0.50 },
+      { "from": "n15", "to": "n5",  "road_name": "Broadway (34th-42nd)",    "distance_km": 1.1, "base_speed_kmh": 18, "congestion_factor": 0.75 },
+      { "from": "n9",  "to": "n11", "road_name": "FDR Drive (Brooklyn-14th)","distance_km": 3.0, "base_speed_kmh": 40, "congestion_factor": 0.30 },
+      { "from": "n11", "to": "n12", "road_name": "Park Ave (14th-34th)",    "distance_km": 1.6, "base_speed_kmh": 30, "congestion_factor": 0.40 },
+      { "from": "n12", "to": "n16", "road_name": "Park Ave (34th-42nd)",    "distance_km": 0.8, "base_speed_kmh": 28, "congestion_factor": 0.50 },
+      { "from": "n16", "to": "n6",  "road_name": "5th Ave (42nd-59th)",     "distance_km": 1.2, "base_speed_kmh": 25, "congestion_factor": 0.45 },
+      { "from": "n12", "to": "n13", "road_name": "FDR Drive (34th-59th)",   "distance_km": 3.0, "base_speed_kmh": 45, "congestion_factor": 0.20 },
+      { "from": "n6",  "to": "n13", "road_name": "59th St crosstown",       "distance_km": 2.8, "base_speed_kmh": 35, "congestion_factor": 0.35 },
+      { "from": "n9",  "to": "n10", "road_name": "FDR/West Side connector", "distance_km": 1.5, "base_speed_kmh": 30, "congestion_factor": 0.30 },
+      { "from": "n19", "to": "n20", "road_name": "Canal St",                "distance_km": 1.0, "base_speed_kmh": 28, "congestion_factor": 0.40 },
+      { "from": "n20", "to": "n9",  "road_name": "Bowery / Manhattan Br",   "distance_km": 2.0, "base_speed_kmh": 25, "congestion_factor": 0.40 },
+      { "from": "n2",  "to": "n11", "road_name": "14th St crosstown",       "distance_km": 0.5, "base_speed_kmh": 25, "congestion_factor": 0.30 },
+      { "from": "n3",  "to": "n14", "road_name": "23rd St crosstown",       "distance_km": 0.3, "base_speed_kmh": 25, "congestion_factor": 0.30 },
+      { "from": "n4",  "to": "n15", "road_name": "34th St (8th-Broadway)",  "distance_km": 0.5, "base_speed_kmh": 22, "congestion_factor": 0.60 },
+      { "from": "n4",  "to": "n12", "road_name": "34th St (8th-Park)",      "distance_km": 1.2, "base_speed_kmh": 22, "congestion_factor": 0.55 },
+      { "from": "n15", "to": "n12", "road_name": "34th St (Broadway-Park)", "distance_km": 0.7, "base_speed_kmh": 20, "congestion_factor": 0.55 },
+      { "from": "n15", "to": "n16", "road_name": "35th-42nd (midtown)",     "distance_km": 1.2, "base_speed_kmh": 22, "congestion_factor": 0.60 },
+      { "from": "n5",  "to": "n16", "road_name": "42nd St crosstown",       "distance_km": 0.4, "base_speed_kmh": 18, "congestion_factor": 0.70 },
+      { "from": "n17", "to": "n6",  "road_name": "57th St crosstown",       "distance_km": 1.0, "base_speed_kmh": 25, "congestion_factor": 0.40 },
+      { "from": "n17", "to": "n7",  "road_name": "57th/Columbus connector", "distance_km": 0.5, "base_speed_kmh": 30, "congestion_factor": 0.25 },
+      { "from": "n5",  "to": "n17", "road_name": "7th Ave (42nd-57th)",     "distance_km": 0.9, "base_speed_kmh": 22, "congestion_factor": 0.50 },
+      { "from": "n6",  "to": "n7",  "road_name": "Central Park South",      "distance_km": 0.5, "base_speed_kmh": 28, "congestion_factor": 0.30 },
+      { "from": "n1",  "to": "n20", "road_name": "Lafayette St",            "distance_km": 0.6, "base_speed_kmh": 25, "congestion_factor": 0.35 }
+    ]
+  },
   "route_options": [
     {
       "route_id": "route_a",
@@ -238,6 +297,231 @@ const TRAFFIC_DATA = {
   }
 };
 
+// Allow config.js to override default map settings.
+if (window.APP_CONFIG && window.APP_CONFIG.map) {
+  const mapConfig = window.APP_CONFIG.map;
+  if (Array.isArray(mapConfig.center) && mapConfig.center.length === 2) {
+    TRAFFIC_DATA.map_config.initial_center = mapConfig.center;
+  }
+  if (Number.isFinite(mapConfig.zoom)) {
+    TRAFFIC_DATA.map_config.initial_zoom = mapConfig.zoom;
+  }
+  if (Number.isFinite(mapConfig.updateIntervalMs)) {
+    TRAFFIC_DATA.map_config.update_interval = mapConfig.updateIntervalMs;
+  }
+}
+
+// ─── A* Pathfinding Router ───────────────────────────────────────────────────
+class AStarRouter {
+  constructor(graph) {
+    this.nodes = new Map();
+    this.adjacency = new Map();
+
+    graph.nodes.forEach(n => {
+      this.nodes.set(n.id, n);
+      this.adjacency.set(n.id, []);
+    });
+
+    graph.edges.forEach(e => {
+      const fwd = { to: e.to,   from: e.from, road_name: e.road_name, distance_km: e.distance_km, base_speed_kmh: e.base_speed_kmh, congestion_factor: e.congestion_factor };
+      const rev = { to: e.from, from: e.to,   road_name: e.road_name, distance_km: e.distance_km, base_speed_kmh: e.base_speed_kmh, congestion_factor: e.congestion_factor };
+      this.adjacency.get(e.from).push(fwd);
+      this.adjacency.get(e.to).push(rev);
+    });
+  }
+
+  /** Haversine distance in km */
+  haversine(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const toRad = v => v * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) ** 2 +
+              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  /** Return the node id closest to the given coordinates */
+  findNearestNode(lat, lng) {
+    let nearest = null, minDist = Infinity;
+    this.nodes.forEach((node, id) => {
+      const d = this.haversine(lat, lng, node.lat, node.lng);
+      if (d < minDist) { minDist = d; nearest = id; }
+    });
+    return nearest;
+  }
+
+  /**
+   * A* search.
+   * costMode: "time" | "distance" | "traffic_aware"
+   */
+  findPath(startId, goalId, costMode = 'time') {
+    if (!this.nodes.has(startId) || !this.nodes.has(goalId)) return null;
+    if (startId === goalId) return null;
+
+    const gScore  = new Map();
+    const fScore  = new Map();
+    const cameFrom = new Map();
+    const edgeUsed = new Map();
+
+    this.nodes.forEach((_, id) => {
+      gScore.set(id, Infinity);
+      fScore.set(id, Infinity);
+    });
+
+    gScore.set(startId, 0);
+    fScore.set(startId, this._heuristic(startId, goalId, costMode));
+
+    const openSet  = new Set([startId]);
+    const closedSet = new Set();
+
+    while (openSet.size > 0) {
+      // Pick node with lowest f
+      let current = null, minF = Infinity;
+      openSet.forEach(id => {
+        const f = fScore.get(id);
+        if (f < minF) { minF = f; current = id; }
+      });
+
+      if (current === goalId) {
+        return this._reconstructPath(cameFrom, edgeUsed, current, gScore.get(current), costMode);
+      }
+
+      openSet.delete(current);
+      closedSet.add(current);
+
+      for (const edge of (this.adjacency.get(current) || [])) {
+        if (closedSet.has(edge.to)) continue;
+
+        const tentativeG = gScore.get(current) + this._edgeCost(edge, costMode);
+
+        if (tentativeG < gScore.get(edge.to)) {
+          cameFrom.set(edge.to, current);
+          edgeUsed.set(edge.to, edge);
+          gScore.set(edge.to, tentativeG);
+          fScore.set(edge.to, tentativeG + this._heuristic(edge.to, goalId, costMode));
+          openSet.add(edge.to);
+        }
+      }
+    }
+
+    return null; // no path
+  }
+
+  /* ---- private helpers ---- */
+
+  _edgeCost(edge, costMode) {
+    const effectiveSpeed = edge.base_speed_kmh * (1 - edge.congestion_factor * 0.8);
+    switch (costMode) {
+      case 'time':
+        return (edge.distance_km / effectiveSpeed) * 60;          // minutes
+      case 'distance':
+        return edge.distance_km;
+      case 'traffic_aware': {
+        const timeCost = (edge.distance_km / effectiveSpeed) * 60;
+        const congestionPenalty = edge.congestion_factor * 10;     // extra penalty
+        return timeCost + congestionPenalty;
+      }
+      default:
+        return edge.distance_km;
+    }
+  }
+
+  _heuristic(nodeId, goalId, costMode) {
+    const n = this.nodes.get(nodeId);
+    const g = this.nodes.get(goalId);
+    const dist = this.haversine(n.lat, n.lng, g.lat, g.lng);
+    switch (costMode) {
+      case 'time':          return (dist / 60) * 60;   // optimistic: 60 km/h straight line
+      case 'traffic_aware': return (dist / 60) * 60;
+      case 'distance':      return dist;
+      default:              return dist;
+    }
+  }
+
+  _reconstructPath(cameFrom, edgeUsed, current, totalCost, costMode) {
+    const path = [current];
+    const edges = [];
+    let totalDistance = 0;
+    let totalTime = 0;
+    const conditions = [];
+    const roadNames = [];
+
+    while (cameFrom.has(current)) {
+      const edge = edgeUsed.get(current);
+      edges.unshift(edge);
+      totalDistance += edge.distance_km;
+      const effSpeed = edge.base_speed_kmh * (1 - edge.congestion_factor * 0.8);
+      totalTime += (edge.distance_km / effSpeed) * 60;
+
+      if (edge.congestion_factor > 0.6)       conditions.unshift('heavy');
+      else if (edge.congestion_factor > 0.3)  conditions.unshift('moderate');
+      else                                     conditions.unshift('light');
+      roadNames.unshift(edge.road_name);
+
+      current = cameFrom.get(current);
+      path.unshift(current);
+    }
+
+    const coordinates = path.map(id => {
+      const n = this.nodes.get(id);
+      return [n.lat, n.lng];
+    });
+
+    const freeFlowTime = edges.reduce(
+      (sum, e) => sum + (e.distance_km / e.base_speed_kmh) * 60, 0
+    );
+
+    return {
+      path,
+      edges,
+      coordinates,
+      totalDistance,
+      totalTime,
+      freeFlowTime,
+      trafficDelay: totalTime - freeFlowTime,
+      conditions,
+      roadNames,
+      costMode
+    };
+  }
+
+  /**
+   * Compute three route alternatives using different A* cost strategies.
+   * Returns an array formatted for the UI (distance string, duration string …).
+   */
+  computeRoutes(startId, goalId) {
+    const modes = [
+      { mode: 'time',          id: 'astar_time',    name: 'A* Fastest Route',      type: 'optimal' },
+      { mode: 'traffic_aware', id: 'astar_traffic',  name: 'A* Avoid Traffic',      type: 'traffic_aware' },
+      { mode: 'distance',      id: 'astar_distance', name: 'A* Shortest Distance',  type: 'distance' }
+    ];
+
+    const results = [];
+    for (const m of modes) {
+      const r = this.findPath(startId, goalId, m.mode);
+      if (!r) continue;
+
+      results.push({
+        route_id:           m.id,
+        name:               m.name,
+        algorithm:          `A* (${m.mode.replace('_', '-')})`,
+        route_type:         m.type,
+        distance:           `${r.totalDistance.toFixed(1)} km`,
+        duration_current:   `${Math.round(r.totalTime)} min`,
+        duration_predicted: `${Math.round(r.totalTime * 1.08)} min`,
+        traffic_delay:      `${Math.round(r.trafficDelay)} min`,
+        coordinates:        r.coordinates,
+        traffic_conditions: r.conditions,
+        road_names:         r.roadNames,
+        _raw:               r
+      });
+    }
+
+    return results;
+  }
+}
+
 // Main Application Class
 class TrafficFlowPro {
   constructor() {
@@ -252,6 +536,14 @@ class TrafficFlowPro {
     this.currentRoute = null;
     this.selectedRouteIndex = 0;
     this.isInitialized = false;
+
+    // A* Router
+    this.router = new AStarRouter(TRAFFIC_DATA.network_graph);
+    this.computedRoutes = TRAFFIC_DATA.route_options; // default fallback
+
+    // External markers loaded from data.json
+    this.externalMarkers = [];
+    this.externalMarkerLayer = L.layerGroup();
     
     // Layer visibility states
     this.layerStates = {
@@ -309,6 +601,14 @@ class TrafficFlowPro {
         console.log('Traffic data loaded');
       } catch (error) {
         console.error('Traffic data loading failed:', error);
+      }
+
+      // Load external markers from data.json (connected via config.js)
+      try {
+        await this.loadExternalData();
+        console.log('External data.json loaded');
+      } catch (error) {
+        console.warn('External data.json not loaded (optional):', error.message);
       }
 
       try {
@@ -400,6 +700,9 @@ class TrafficFlowPro {
       if (this.layerStates.trafficFlow && this.map) {
         this.trafficFlowLayer.addTo(this.map);
       }
+      if (this.map) {
+        this.routeLayer.addTo(this.map);
+      }
     } catch (error) {
       console.error('Layer initialization error:', error);
     }
@@ -408,7 +711,7 @@ class TrafficFlowPro {
   createTrafficFlowVisualization() {
     try {
       const roads = TRAFFIC_DATA.traffic_network.roads;
-      
+
       roads.forEach(road => {
         try {
           let color;
@@ -426,25 +729,55 @@ class TrafficFlowPro {
               color = '#888888';
           }
 
-          const polyline = L.polyline(road.coordinates, {
-            color: color,
-            weight: 8,
-            opacity: 0.8,
-            className: 'traffic-flow-line'
+          // Fetch real road geometry from OSRM so lines follow actual roads
+          this._fetchRoadGeometryForTraffic(road.coordinates).then(realCoords => {
+            const coords = realCoords || road.coordinates;
+            const polyline = L.polyline(coords, {
+              color: color,
+              weight: 6,
+              opacity: 0.8,
+              className: 'traffic-flow-line'
+            });
+
+            polyline.bindPopup(this.createTrafficFlowPopup(road), {
+              maxWidth: 300,
+              className: 'traffic-flow-popup'
+            });
+
+            this.trafficFlowLayer.addLayer(polyline);
           });
-          
-          polyline.bindPopup(this.createTrafficFlowPopup(road), {
-            maxWidth: 300,
-            className: 'traffic-flow-popup'
-          });
-          
-          this.trafficFlowLayer.addLayer(polyline);
         } catch (error) {
           console.error('Error creating road visualization:', error);
         }
       });
     } catch (error) {
       console.error('Traffic flow visualization error:', error);
+    }
+  }
+
+  /**
+   * Fetch real road geometry from OSRM for traffic flow overlay lines.
+   * Returns [lat, lng][] following actual road paths, or null on failure.
+   */
+  async _fetchRoadGeometryForTraffic(coordinates) {
+    try {
+      // OSRM expects lng,lat
+      const waypointStr = coordinates
+        .map(pt => `${pt[1]},${pt[0]}`)
+        .join(';');
+
+      const url = `https://router.project-osrm.org/route/v1/driving/${waypointStr}?overview=full&geometries=geojson`;
+      const response = await fetch(url);
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) return null;
+
+      // Convert [lng, lat] → [lat, lng] for Leaflet
+      return data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
+    } catch (err) {
+      console.warn('OSRM traffic road geometry failed:', err.message);
+      return null;
     }
   }
 
@@ -512,6 +845,50 @@ class TrafficFlowPro {
     } catch (error) {
       console.error('Traffic data loading error:', error);
     }
+  }
+
+  /** Load data.json markers and GeoJSON into the map (connected via config.js) */
+  async loadExternalData() {
+    const cfg = window.APP_CONFIG && window.APP_CONFIG.data;
+    if (!cfg || !cfg.enableExternalMarkers) return;
+
+    const res = await fetch(cfg.markersUrl);
+    if (!res.ok) throw new Error(`data.json fetch failed: ${res.status}`);
+    const data = await res.json();
+
+    const iconCfg = window.APP_CONFIG && window.APP_CONFIG.assets;
+    const defaultIconUrl = (iconCfg && iconCfg.defaultMarkerIcon) || 'icons/marker-default.svg';
+
+    const customIcon = L.icon({
+      iconUrl: defaultIconUrl,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -28]
+    });
+
+    // Place markers from data.json
+    if (Array.isArray(data.markers)) {
+      data.markers.forEach(m => {
+        if (!m.coordinates || m.coordinates.length < 2) return;
+        const marker = L.marker(m.coordinates, { icon: customIcon })
+          .bindPopup(`<strong>${m.name || 'Marker'}</strong><br>Type: ${m.type || 'unknown'}`);
+        this.externalMarkerLayer.addLayer(marker);
+        this.externalMarkers.push(marker);
+      });
+    }
+
+    // Add GeoJSON features if present
+    if (data.geojson && data.geojson.features && data.geojson.features.length > 0) {
+      L.geoJSON(data.geojson, {
+        style: { color: TRAFFIC_DATA.map_config.colors.route_alternative, weight: 3 }
+      }).addTo(this.externalMarkerLayer);
+    }
+
+    if (this.map) {
+      this.externalMarkerLayer.addTo(this.map);
+    }
+
+    console.log(`Loaded ${this.externalMarkers.length} markers from data.json`);
   }
 
   createSignalMarker(signal) {
@@ -739,6 +1116,10 @@ class TrafficFlowPro {
         swapRoutesBtn.addEventListener('click', () => this.swapRouteInputs());
       }
 
+      // Global autocomplete for origin & destination inputs
+      this._setupGlobalAutocomplete('origin-input');
+      this._setupGlobalAutocomplete('destination-input');
+
       // Location services
       const findLocationBtn = document.getElementById('find-location');
       if (findLocationBtn) {
@@ -828,13 +1209,84 @@ class TrafficFlowPro {
     }
   }
 
-  planRoute() {
+  /** Resolve free-text location to the nearest graph node id.
+   *  Uses a three-tier strategy: exact alias → fuzzy word match → always returns best guess. */
+  _resolveLocation(text) {
+    if (!text) return null;
+    const lower = text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!lower) return null;
+
+    // ── Tier 1: keyword / alias lookup (very broad) ─────────────────────
+    const aliases = [
+      { keys: ['times square','times sq','42nd broadway','42 broadway','42nd st broadway','time square'], id: 'n5' },
+      { keys: ['penn station','penn','madison square garden','msg','34th 8th','34 8th','moynihan'], id: 'n4' },
+      { keys: ['union square','union sq','14th broadway','14 broadway'], id: 'n2' },
+      { keys: ['central park','central park south','59th 5th','59 5th','cps'], id: 'n6' },
+      { keys: ['columbus circle','columbus','columbus cir'], id: 'n7' },
+      { keys: ['lincoln center','lincoln ctr','lincoln','65th broadway','65 broadway'], id: 'n8' },
+      { keys: ['brooklyn bridge','brooklyn br','brooklyn'], id: 'n9' },
+      { keys: ['battery park','battery','financial district','wall street','wall st','fidi','lower manhattan'], id: 'n10' },
+      { keys: ['soho','spring st','spring street','spring lafayette','lafayette'], id: 'n20' },
+      { keys: ['tribeca','chambers','chambers st','chambers street'], id: 'n19' },
+      { keys: ['houston','houston st','houston street','varick','varick st'], id: 'n1' },
+      { keys: ['chelsea','23rd 6th','23 6th','23rd st 6th','23rd avenue'], id: 'n3' },
+      { keys: ['flatiron','flat iron','23rd broadway','23 broadway','madison sq park'], id: 'n14' },
+      { keys: ['herald square','herald sq','herald','macy','macys','34th broadway','34 broadway'], id: 'n15' },
+      { keys: ['57th','57 st','57th st','carnegie','carnegie hall','57th 7th'], id: 'n17' },
+      { keys: ['72nd','72 st','72nd st','72nd broadway','upper west','uws'], id: 'n18' },
+      { keys: ['fdr','fdr drive','east side','east river','59th fdr','sutton'], id: 'n13' },
+      { keys: ['grand central','grand central station','grand central terminal','gct','42nd 5th','42 5th','library','nypl','bryant park','midtown east'], id: 'n16' },
+      { keys: ['gramercy','gramercy park','14th 3rd','14 3rd','stuyvesant'], id: 'n11' },
+      { keys: ['park ave','park avenue','murray hill','34th park','34 park'], id: 'n12' }
+    ];
+
+    for (const group of aliases) {
+      for (const kw of group.keys) {
+        if (lower.includes(kw) || kw.includes(lower)) return group.id;
+      }
+    }
+
+    // ── Tier 2: match street numbers ("34th" → nodes with "34th" in name) ─
+    const streetMatch = lower.match(/(\d+)(?:st|nd|rd|th)?/);
+    if (streetMatch) {
+      const num = streetMatch[1];
+      const candidates = [];
+      this.router.nodes.forEach((node, id) => {
+        if (node.name.includes(num)) candidates.push(id);
+      });
+      if (candidates.length === 1) return candidates[0];
+      if (candidates.length > 1) {
+        // pick the one whose name shares the most words with input
+        const words = lower.split(/\s+/);
+        let bestId = candidates[0], bestS = 0;
+        candidates.forEach(id => {
+          const name = this.router.nodes.get(id).name.toLowerCase();
+          const s = words.filter(w => name.includes(w)).length;
+          if (s > bestS) { bestS = s; bestId = id; }
+        });
+        return bestId;
+      }
+    }
+
+    // No aggressive fuzzy match — unrecognised inputs fall through to
+    // global Nominatim + OSRM routing so all worldwide cities work.
+    return null;
+  }
+
+  /** Returns a readable list of location names the resolver understands */
+  _getAvailableLocationNames() {
+    const names = [];
+    this.router.nodes.forEach(n => names.push(n.name));
+    return names;
+  }
+
+  async planRoute() {
     const originInput = document.getElementById('origin-input');
     const destinationInput = document.getElementById('destination-input');
-    
+
     const origin = originInput ? originInput.value.trim() : '';
     const destination = destinationInput ? destinationInput.value.trim() : '';
-    
+
     if (!origin || !destination) {
       this.showNotification('Please enter both origin and destination addresses', 'error');
       return;
@@ -842,13 +1294,241 @@ class TrafficFlowPro {
 
     this.showLoading();
 
-    // Simulate route planning
-    setTimeout(() => {
+    // ── Try local NYC A* first ────────────────────────────────────────
+    const startNode = this._resolveLocation(origin);
+    const goalNode  = this._resolveLocation(destination);
+
+    if (startNode && goalNode && startNode !== goalNode) {
+      const routes = this.router.computeRoutes(startNode, goalNode);
+      if (routes.length) {
+        this.computedRoutes = routes;
+        this.selectedRouteIndex = 0;
+        this.displayRouteOptions();
+        this.showRouteSummary();
+        this.hideLoading();
+        const startName = this.router.nodes.get(startNode).name;
+        const goalName  = this.router.nodes.get(goalNode).name;
+        this.showNotification(`A* found ${routes.length} routes: ${startName} → ${goalName}`, 'success');
+        return;
+      }
+    }
+
+    // ── Global routing: Geocode with Nominatim + route with OSRM ─────
+    try {
+      const [originCoords, destCoords] = await Promise.all([
+        this._geocodeLocation(origin),
+        this._geocodeLocation(destination)
+      ]);
+
+      if (!originCoords) {
+        this.hideLoading();
+        this.showNotification(`Could not find location: "${origin}". Try a more specific name.`, 'error');
+        return;
+      }
+      if (!destCoords) {
+        this.hideLoading();
+        this.showNotification(`Could not find location: "${destination}". Try a more specific name.`, 'error');
+        return;
+      }
+
+      // Fetch route from OSRM
+      const osrmRoute = await this._fetchGlobalOSRMRoute(originCoords, destCoords);
+
+      if (!osrmRoute) {
+        this.hideLoading();
+        this.showNotification('No route found between these locations. They may be on different continents or unreachable by road.', 'error');
+        return;
+      }
+
+      // Build route objects for UI
+      const distKm = (osrmRoute.distance / 1000).toFixed(1);
+      const durMin = Math.round(osrmRoute.duration / 60);
+      const coords = osrmRoute.geometry.coordinates.map(c => [c[1], c[0]]); // [lng,lat] → [lat,lng]
+
+      const globalRoutes = [
+        {
+          route_id: 'global_fastest',
+          name: 'Fastest Route',
+          algorithm: 'OSRM (Global)',
+          route_type: 'optimal',
+          distance: `${distKm} km`,
+          duration_current: `${durMin} min`,
+          duration_predicted: `${Math.round(durMin * 1.1)} min`,
+          traffic_delay: `${Math.round(durMin * 0.1)} min`,
+          coordinates: coords,
+          traffic_conditions: ['moderate'],
+          road_names: [osrmRoute.legs ? osrmRoute.legs.map(l => l.summary).join(' → ') : 'Road route'],
+          _isGlobal: true
+        }
+      ];
+
+      this.computedRoutes = globalRoutes;
+      this.selectedRouteIndex = 0;
       this.displayRouteOptions();
       this.showRouteSummary();
       this.hideLoading();
-      this.showNotification(`Route from "${origin}" to "${destination}" calculated`, 'success');
-    }, 1200);
+      this.showNotification(`Route found: ${originCoords.display} → ${destCoords.display} (${distKm} km, ~${durMin} min)`, 'success');
+    } catch (err) {
+      this.hideLoading();
+      console.error('Global routing error:', err);
+      this.showNotification('Error finding route. Please check your internet connection and try again.', 'error');
+    }
+  }
+
+  /**
+   * Geocode a place name to coordinates using Nominatim (free, OpenStreetMap).
+   * Works for any location worldwide — cities, landmarks, addresses.
+   */
+  async _geocodeLocation(query) {
+    try {
+      const encoded = encodeURIComponent(query);
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encoded}&limit=1&addressdetails=1`;
+      const response = await fetch(url, {
+        headers: { 'Accept-Language': 'en' }
+      });
+      if (!response.ok) return null;
+
+      const results = await response.json();
+      if (!results || results.length === 0) return null;
+
+      const r = results[0];
+      return {
+        lat: parseFloat(r.lat),
+        lng: parseFloat(r.lon),
+        display: r.display_name.split(',').slice(0, 2).join(',')
+      };
+    } catch (err) {
+      console.warn('Geocoding failed for:', query, err.message);
+      return null;
+    }
+  }
+
+  /**
+   * Fetch driving route from OSRM between two geocoded points (global).
+   * Returns the full route object with geometry, distance, duration.
+   */
+  async _fetchGlobalOSRMRoute(origin, dest) {
+    try {
+      const url = `https://router.project-osrm.org/route/v1/driving/${origin.lng},${origin.lat};${dest.lng},${dest.lat}?overview=full&geometries=geojson&steps=true`;
+      const response = await fetch(url);
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) return null;
+
+      return data.routes[0];
+    } catch (err) {
+      console.warn('OSRM global routing failed:', err.message);
+      return null;
+    }
+  }
+
+  /**
+   * Live autocomplete: search Nominatim for place suggestions worldwide.
+   * Returns array of { display, lat, lng }.
+   */
+  async _searchLocations(query) {
+    if (!query || query.length < 3) return [];
+    try {
+      const encoded = encodeURIComponent(query);
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encoded}&limit=5&addressdetails=1`;
+      const response = await fetch(url, {
+        headers: { 'Accept-Language': 'en' }
+      });
+      if (!response.ok) return [];
+      const results = await response.json();
+      return results.map(r => ({
+        display: r.display_name,
+        short: r.display_name.split(',').slice(0, 3).join(','),
+        lat: parseFloat(r.lat),
+        lng: parseFloat(r.lon)
+      }));
+    } catch (err) {
+      return [];
+    }
+  }
+
+  /**
+   * Setup live autocomplete dropdown on an input field using Nominatim.
+   * Shows suggestions as user types any location worldwide.
+   */
+  _setupGlobalAutocomplete(inputId) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+
+    // Remove datalist binding so our custom dropdown works
+    input.removeAttribute('list');
+
+    let debounceTimer = null;
+    let dropdown = null;
+
+    const removeDropdown = () => {
+      if (dropdown && dropdown.parentNode) {
+        dropdown.parentNode.removeChild(dropdown);
+      }
+      dropdown = null;
+    };
+
+    input.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      const val = input.value.trim();
+      if (val.length < 3) { removeDropdown(); return; }
+
+      debounceTimer = setTimeout(async () => {
+        const results = await this._searchLocations(val);
+        removeDropdown();
+        if (!results.length) return;
+
+        dropdown = document.createElement('div');
+        dropdown.className = 'autocomplete-dropdown';
+        dropdown.style.cssText = `
+          position: absolute; z-index: 10000; background: var(--color-surface, #1f2121);
+          border: 1px solid var(--color-border, #555); border-radius: 8px;
+          max-height: 220px; overflow-y: auto; width: ${input.offsetWidth}px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.3); margin-top: 2px;
+        `;
+
+        results.forEach(r => {
+          const item = document.createElement('div');
+          item.className = 'autocomplete-item';
+          item.textContent = r.short;
+          item.title = r.display;
+          item.style.cssText = `
+            padding: 10px 14px; cursor: pointer; font-size: 13px;
+            color: var(--color-text, #f5f5f5); border-bottom: 1px solid var(--color-border, #333);
+            transition: background 0.15s;
+          `;
+          item.addEventListener('mouseenter', () => { item.style.background = 'var(--color-primary, #21808d)'; item.style.color = '#fff'; });
+          item.addEventListener('mouseleave', () => { item.style.background = 'transparent'; item.style.color = 'var(--color-text, #f5f5f5)'; });
+          item.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            input.value = r.short;
+            removeDropdown();
+          });
+          dropdown.appendChild(item);
+        });
+
+        // Position dropdown below the input
+        const rect = input.getBoundingClientRect();
+        dropdown.style.position = 'fixed';
+        dropdown.style.top = (rect.bottom + 2) + 'px';
+        dropdown.style.left = rect.left + 'px';
+        dropdown.style.width = rect.width + 'px';
+        document.body.appendChild(dropdown);
+      }, 350);
+    });
+
+    input.addEventListener('blur', () => {
+      setTimeout(removeDropdown, 200);
+    });
+
+    // Allow Enter key to trigger route search
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        removeDropdown();
+        this.planRoute();
+      }
+    });
   }
 
   displayRouteOptions() {
@@ -859,7 +1539,8 @@ class TrafficFlowPro {
 
     section.classList.remove('hidden');
     
-    container.innerHTML = TRAFFIC_DATA.route_options.map((route, index) => `
+    const routes = this.computedRoutes;
+    container.innerHTML = routes.map((route, index) => `
       <div class="route-option ${index === this.selectedRouteIndex ? 'selected' : ''}" data-route-index="${index}">
         <div class="route-option-header">
           <span class="route-name">${route.name}</span>
@@ -869,6 +1550,7 @@ class TrafficFlowPro {
           <span class="route-distance">${route.distance}</span>
           <span class="route-delay">+${route.traffic_delay} delay</span>
         </div>
+        ${route.algorithm ? `<div class="route-algo" style="font-size:11px;color:var(--color-primary);margin-top:4px;">⚡ ${route.algorithm}</div>` : ''}
       </div>
     `).join('');
 
@@ -882,6 +1564,7 @@ class TrafficFlowPro {
 
     // Display the selected route
     this.displayRouteOnMap(this.selectedRouteIndex);
+    this.updatePredictions();
   }
 
   selectRoute(index) {
@@ -898,6 +1581,7 @@ class TrafficFlowPro {
     // Update map
     this.displayRouteOnMap(index);
     this.updateRouteSummary(index);
+    this.updatePredictions();
   }
 
   displayRouteOnMap(routeIndex) {
@@ -910,18 +1594,13 @@ class TrafficFlowPro {
         if (this.map) this.routeLayer.addTo(this.map);
       }
 
-      const route = TRAFFIC_DATA.route_options[routeIndex];
+      const route = this.computedRoutes[routeIndex];
       if (!route || !this.map) return;
 
-      // Create route polyline
-      const routeLine = L.polyline(route.coordinates, {
-        color: TRAFFIC_DATA.map_config.colors.route_primary,
-        weight: 6,
-        opacity: 0.9
-      });
+      const coords = route.coordinates;
 
-      // Add start marker
-      const startMarker = L.marker(route.coordinates[0], {
+      // Add start & end markers
+      const startMarker = L.marker(coords[0], {
         icon: L.divIcon({
           className: 'route-marker-start',
           html: '<div style="background: #22c55e; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); font-size: 16px;">A</div>',
@@ -929,9 +1608,7 @@ class TrafficFlowPro {
           iconAnchor: [16, 16]
         })
       });
-
-      // Add end marker
-      const endMarker = L.marker(route.coordinates[route.coordinates.length - 1], {
+      const endMarker = L.marker(coords[coords.length - 1], {
         icon: L.divIcon({
           className: 'route-marker-end',
           html: '<div style="background: #ef4444; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); font-size: 16px;">B</div>',
@@ -939,15 +1616,129 @@ class TrafficFlowPro {
           iconAnchor: [16, 16]
         })
       });
-
-      this.routeLayer.addLayer(routeLine);
       this.routeLayer.addLayer(startMarker);
       this.routeLayer.addLayer(endMarker);
 
-      // Fit map to route bounds
-      this.map.fitBounds(routeLine.getBounds(), { padding: [40, 40] });
+      // Global routes already have full OSRM road geometry — draw directly
+      if (route._isGlobal) {
+        const routeLine = L.polyline(coords, {
+          color: TRAFFIC_DATA.map_config.colors.route_primary,
+          weight: 6,
+          opacity: 0.85
+        });
+        this.routeLayer.addLayer(routeLine);
+        this.map.fitBounds(routeLine.getBounds(), { padding: [40, 40] });
+        return;
+      }
+
+      // Local A* routes: fetch road geometry from OSRM for proper road following
+      this._fetchOSRMRoadGeometry(coords, route).then(roadCoords => {
+        if (!this.routeLayer) return;
+
+        if (roadCoords) {
+          this._drawRoadRoute(roadCoords, route);
+        } else {
+          this._drawFallbackRoute(coords, route);
+        }
+
+        const allPts = roadCoords || coords;
+        const fitLine = L.polyline(allPts, { opacity: 0 });
+        this.routeLayer.addLayer(fitLine);
+        this.map.fitBounds(fitLine.getBounds(), { padding: [40, 40] });
+      });
     } catch (error) {
       console.error('Error displaying route:', error);
+    }
+  }
+
+  /**
+   * Fetch actual road geometry from OSRM (free, no API key).
+   * Sends the A* waypoints; OSRM returns road-following coordinates.
+   */
+  async _fetchOSRMRoadGeometry(waypoints, route) {
+    try {
+      // OSRM wants lng,lat (not lat,lng)
+      const waypointStr = waypoints
+        .map(pt => `${pt[1]},${pt[0]}`)
+        .join(';');
+
+      const url = `https://router.project-osrm.org/route/v1/driving/${waypointStr}?overview=full&geometries=geojson`;
+
+      const response = await fetch(url);
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) return null;
+
+      // OSRM GeoJSON coordinates are [lng, lat] → convert to [lat, lng] for Leaflet
+      const geojsonCoords = data.routes[0].geometry.coordinates;
+      return geojsonCoords.map(c => [c[1], c[0]]);
+    } catch (err) {
+      console.warn('OSRM request failed, using fallback straight-line route:', err.message);
+      return null;
+    }
+  }
+
+  /** Draw road-following route, colour-coded by overall traffic condition */
+  _drawRoadRoute(roadCoords, route) {
+    // Determine overall colour from the worst traffic condition in this route
+    const conditions = route.traffic_conditions || [];
+    let worstCond = 'light';
+    for (const c of conditions) {
+      if (c === 'heavy') { worstCond = 'heavy'; break; }
+      if (c === 'moderate') worstCond = 'moderate';
+    }
+
+    // Segment the road geometry by mapping each road-coord to the closest A* edge
+    const aStarCoords = route.coordinates;
+    const segBoundaries = this._mapRoadCoordsToSegments(roadCoords, aStarCoords);
+
+    for (let s = 0; s < segBoundaries.length - 1; s++) {
+      const start = segBoundaries[s];
+      const end   = segBoundaries[s + 1] + 1;
+      const segPts = roadCoords.slice(start, end);
+      if (segPts.length < 2) continue;
+
+      const cond = conditions[s] || 'light';
+      let segColor = TRAFFIC_DATA.map_config.colors.route_primary;
+      if (cond === 'heavy')         segColor = TRAFFIC_DATA.map_config.colors.traffic_heavy;
+      else if (cond === 'moderate') segColor = TRAFFIC_DATA.map_config.colors.traffic_moderate;
+      else if (cond === 'light')    segColor = TRAFFIC_DATA.map_config.colors.traffic_free;
+
+      const seg = L.polyline(segPts, { color: segColor, weight: 6, opacity: 0.85 });
+      if (route.road_names && route.road_names[s]) {
+        seg.bindPopup(`<b>${route.road_names[s]}</b><br>Traffic: ${cond}`);
+      }
+      this.routeLayer.addLayer(seg);
+    }
+  }
+
+  /** Map dense OSRM coords to A* segment boundaries for colour-coding */
+  _mapRoadCoordsToSegments(roadCoords, aStarCoords) {
+    const boundaries = [0];
+    for (let a = 1; a < aStarCoords.length; a++) {
+      const target = aStarCoords[a];
+      let bestIdx = boundaries[boundaries.length - 1];
+      let bestDist = Infinity;
+      for (let r = boundaries[boundaries.length - 1]; r < roadCoords.length; r++) {
+        const d = (roadCoords[r][0] - target[0]) ** 2 + (roadCoords[r][1] - target[1]) ** 2;
+        if (d < bestDist) { bestDist = d; bestIdx = r; }
+      }
+      boundaries.push(bestIdx);
+    }
+    return boundaries;
+  }
+
+  /** Fallback straight-line rendering if OSRM is unavailable */
+  _drawFallbackRoute(coords, route) {
+    for (let i = 0; i < coords.length - 1; i++) {
+      const cond = route.traffic_conditions && route.traffic_conditions[i];
+      let segColor = TRAFFIC_DATA.map_config.colors.route_primary;
+      if (cond === 'heavy')         segColor = TRAFFIC_DATA.map_config.colors.traffic_heavy;
+      else if (cond === 'moderate') segColor = TRAFFIC_DATA.map_config.colors.traffic_moderate;
+      else if (cond === 'light')    segColor = TRAFFIC_DATA.map_config.colors.traffic_free;
+      const seg = L.polyline([coords[i], coords[i + 1]], { color: segColor, weight: 6, opacity: 0.9 });
+      this.routeLayer.addLayer(seg);
     }
   }
 
@@ -972,8 +1763,8 @@ class TrafficFlowPro {
 
   updateRouteSummary(routeIndex) {
     const content = document.getElementById('summary-content');
-    const route = TRAFFIC_DATA.route_options[routeIndex];
-    
+    const route = this.computedRoutes[routeIndex];
+
     if (!content || !route) return;
 
     content.innerHTML = `
@@ -1253,7 +2044,8 @@ class TrafficFlowPro {
         }
       }, 1000);
 
-      // Major updates every 30 seconds
+      // Major updates at configured interval
+      const majorUpdateInterval = TRAFFIC_DATA.map_config.update_interval || 30000;
       setInterval(() => {
         try {
           this.simulateSignalChanges();
@@ -1262,7 +2054,7 @@ class TrafficFlowPro {
         } catch (error) {
           console.error('Major update cycle error:', error);
         }
-      }, 30000);
+      }, majorUpdateInterval);
     } catch (error) {
       console.error('Real-time update setup error:', error);
     }
@@ -1392,30 +2184,78 @@ class TrafficFlowPro {
 
   updatePredictions() {
     try {
-      // Simulate dynamic predictions based on current time
-      const currentHour = new Date().getHours();
-      let congestionStatus;
-      let peakTime;
-      let departureTime;
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMin  = now.getMinutes();
+      const route = this.computedRoutes && this.computedRoutes[this.selectedRouteIndex];
 
-      if (currentHour >= 7 && currentHour <= 9) {
-        congestionStatus = 'peak morning rush';
-        peakTime = '8:30 AM';
-        departureTime = 'after 10:00 AM';
-      } else if (currentHour >= 17 && currentHour <= 19) {
-        congestionStatus = 'peak evening rush';
-        peakTime = '6:00 PM';
-        departureTime = 'after 7:30 PM';
-      } else if (currentHour >= 11 && currentHour <= 14) {
-        congestionStatus = 'moderate lunch traffic';
-        peakTime = '12:30 PM';
-        departureTime = 'now or after 2:00 PM';
-      } else {
-        congestionStatus = 'light traffic';
-        peakTime = 'next rush hour';
-        departureTime = 'anytime';
+      // ── Base time-of-day congestion profile (0-100) ───────────────
+      const hourProfile = {
+        0:5,1:3,2:2,3:2,4:5,5:15,6:30,7:55,8:85,9:70,
+        10:50,11:55,12:65,13:68,14:58,15:55,16:65,17:88,18:92,19:75,
+        20:50,21:35,22:20,23:10
+      };
+      const baseCongestion = hourProfile[currentHour] || 40;
+
+      // ── Route-aware adjustments ───────────────────────────────────
+      let routeFactor = 0;
+      let routeDistKm = 0;
+      let routeDurMin = 0;
+      if (route) {
+        // Extract numeric distance/duration from route strings
+        routeDistKm = parseFloat(route.distance) || 0;
+        routeDurMin = parseFloat(route.duration_current) || 0;
+
+        // Heavier routes get more congestion influence
+        const conditions = route.traffic_conditions || [];
+        const heavyCount = conditions.filter(c => c === 'heavy').length;
+        const modCount   = conditions.filter(c => c === 'moderate').length;
+        routeFactor = (heavyCount * 15 + modCount * 7) / Math.max(conditions.length, 1);
       }
-      
+
+      const effectiveCongestion = Math.min(100, Math.round(baseCongestion + routeFactor + (Math.random() * 6 - 3)));
+
+      // ── Congestion status label ───────────────────────────────────
+      let congestionStatus;
+      if (effectiveCongestion >= 80)      congestionStatus = 'heavy congestion ahead';
+      else if (effectiveCongestion >= 60) congestionStatus = 'moderate traffic building';
+      else if (effectiveCongestion >= 35) congestionStatus = 'light-moderate flow';
+      else                                  congestionStatus = 'light, smooth traffic';
+
+      // Add route context if available
+      if (route && routeDistKm > 0) {
+        const delayStr = route.traffic_delay ? ` (+${route.traffic_delay} delay)` : '';
+        congestionStatus += delayStr;
+      }
+
+      // ── Peak time prediction ─────────────────────────────────────
+      let peakTime;
+      if (currentHour < 8)        peakTime = '8:00 – 9:00 AM';
+      else if (currentHour < 12)  peakTime = '5:30 – 6:30 PM';
+      else if (currentHour < 17)  peakTime = '5:30 – 6:30 PM';
+      else if (currentHour < 20)  peakTime = 'now — peak evening';
+      else                          peakTime = '8:00 – 9:00 AM tomorrow';
+
+      // ── Best departure suggestion (route-aware) ──────────────────
+      let departureTime;
+      if (effectiveCongestion >= 75) {
+        // Find next low-congestion window
+        let bestHour = currentHour + 1;
+        for (let h = currentHour + 1; h <= currentHour + 8; h++) {
+          const hh = h % 24;
+          if ((hourProfile[hh] || 40) < 45) { bestHour = hh; break; }
+        }
+        const fmt = bestHour > 12 ? `${bestHour - 12}:00 PM` : `${bestHour}:00 AM`;
+        departureTime = `after ${fmt}`;
+        if (routeDurMin > 0) departureTime += ` (saves ~${Math.round(routeDurMin * 0.15)} min)`;
+      } else if (effectiveCongestion >= 50) {
+        departureTime = 'now is okay, or wait 1-2 hrs';
+        if (routeDurMin > 0) departureTime = `now (~${routeDurMin} min) or wait 1-2 hrs`;
+      } else {
+        departureTime = 'now — roads are clear';
+        if (routeDurMin > 0) departureTime = `now — ~${routeDurMin} min, roads clear`;
+      }
+
       this.updateElement('prediction-30', congestionStatus);
       this.updateElement('prediction-peak', peakTime);
       this.updateElement('prediction-departure', departureTime);
