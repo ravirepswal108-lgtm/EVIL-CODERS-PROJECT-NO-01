@@ -773,6 +773,20 @@ select.form-control {
   min-width: 180px;
 }
 
+/* Brand: logo + title side by side */
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-width: 180px;
+}
+
+.app-logo {
+  height: 36px;
+  width: auto;
+  flex-shrink: 0;
+}
+
 /* Route Planning Styles */
 .route-planning {
   display: flex;
