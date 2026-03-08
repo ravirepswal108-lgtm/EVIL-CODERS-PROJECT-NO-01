@@ -1,0 +1,14 @@
+{
+  "name": "trafficflow-pro",
+  "version": "1.0.0",
+  "description": "AI-Powered Traffic Management with Leaflet & A* Routing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "express": "^4.21.0"
+  }
+}

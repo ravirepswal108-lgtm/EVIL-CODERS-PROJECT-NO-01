@@ -1,0 +1,79 @@
+{
+  "markers": [
+    {
+      "id": "marker-1",
+      "name": "Times Square",
+      "coordinates": [40.758, -73.9855],
+      "type": "landmark",
+      "description": "Major commercial intersection and tourist destination"
+    },
+    {
+      "id": "marker-2",
+      "name": "Penn Station",
+      "coordinates": [40.7505, -73.9934],
+      "type": "transport",
+      "description": "Major rail station and transit hub"
+    },
+    {
+      "id": "marker-3",
+      "name": "Central Park South",
+      "coordinates": [40.7614, -73.9776],
+      "type": "landmark",
+      "description": "Southern edge of Central Park at 59th St"
+    },
+    {
+      "id": "marker-4",
+      "name": "Brooklyn Bridge",
+      "coordinates": [40.7081, -73.9967],
+      "type": "landmark",
+      "description": "Iconic suspension bridge connecting Manhattan and Brooklyn"
+    },
+    {
+      "id": "marker-5",
+      "name": "Union Square",
+      "coordinates": [40.7359, -73.9906],
+      "type": "transport",
+      "description": "Major subway hub and public plaza"
+    },
+    {
+      "id": "marker-6",
+      "name": "Columbus Circle",
+      "coordinates": [40.77, -73.9831],
+      "type": "landmark",
+      "description": "Traffic circle at the southwest corner of Central Park"
+    },
+    {
+      "id": "marker-7",
+      "name": "Lincoln Center",
+      "coordinates": [40.7736, -73.9851],
+      "type": "landmark",
+      "description": "Performing arts complex on the Upper West Side"
+    },
+    {
+      "id": "marker-8",
+      "name": "Grand Central",
+      "coordinates": [40.7527, -73.9817],
+      "type": "transport",
+      "description": "Historic train terminal at 42nd St and Park Ave"
+    }
+  ],
+  "geojson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "name": "Midtown Core Zone", "zone": "congestion" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-73.996, 40.748],
+            [-73.976, 40.748],
+            [-73.976, 40.762],
+            [-73.996, 40.762],
+            [-73.996, 40.748]
+          ]]
+        }
+      }
+    ]
+  }
+}
